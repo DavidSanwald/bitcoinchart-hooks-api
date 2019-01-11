@@ -1,28 +1,47 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import useWindowSize from './useWindowSize'
+import { useFetch } from './useFetch'
+import Chart from './Chart'
+import './App.css'
+import 'styled-components/macro'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+const API = 'https://api.coindesk.com/v1/bpi/historical/close.json'
+const credits = (
+  <p>
+    Powered by <a href={'https://www.coindesk.com/price/'}>CoinDesk</a>
+  </p>
+)
+
+function App() {
+  const { error, loading, data } = useFetch(API)
+  const chartData = loading
+    ? []
+    : Object.entries(data.bpi).map(([date, value]) => ({
+        date: new Date(date),
+        value
+      }))
+  const { width, height } = useWindowSize()
+  const chartWidth = width * 0.6
+  const chartHeight = height * 0.45
+  return (
+    <div css="display: flex; height:100vh; flex-direction: column; align-items: center; justify-content: center">
+      {loading ? (
+        'loading'
+      ) : (
+        <Chart
+          data={chartData}
+          width={chartWidth}
+          height={chartHeight}
+          margin={{
+            top: 0,
+            left: 45,
+            right: 0,
+            bottom: 45
+          }}
+        />
+      )}
+      {credits}
+    </div>
+  )
 }
-
-export default App;
+export default App
