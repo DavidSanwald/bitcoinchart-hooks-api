@@ -1,5 +1,7 @@
-# Experiments with minimalist chart styles inspired by Edward Tuffte while checking out the new Hooks API
+#Chart Experiments
+
+Some experiments with extremely, minimalist chart styling inspired by Edward Tufte while exploring the capabilities of React's novel Hooks API.
 
 ![WIP](/screen_recording.gif)
 
-Have a look at the current iteration [Current State](https://create-react-app-kzc6j68mr.now.sh)
+Have a look at the current iteration [current iteration](https://create-react-app-kzc6j68mr.now.sh)
