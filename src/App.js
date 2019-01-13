@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import useWindowSize from './useWindowSize'
 import { useFetch } from './useFetch'
 import Chart from './Chart'
-import './App.css'
 import 'styled-components/macro'
 
 const API = 'https://api.coindesk.com/v1/bpi/historical/close.json'
@@ -22,7 +21,7 @@ function App() {
       }))
   const { width, height } = useWindowSize()
   const chartWidth = width * 0.6
-  const chartHeight = height * 0.45
+  const chartHeight = Math.min(height * 0.45, width / 3)
   return (
     <div css="display: flex; height:100vh; flex-direction: column; align-items: center; justify-content: center">
       {loading ? (
@@ -33,7 +32,7 @@ function App() {
           width={chartWidth}
           height={chartHeight}
           margin={{
-            top: 0,
+            top: 30,
             left: 45,
             right: 0,
             bottom: 45

@@ -6,18 +6,23 @@
     "@vx/axis": "0.0.183",
     "@vx/event": "0.0.182",
     "@vx/glyph": "0.0.183",
+    "@vx/group": "0.0.183",
     "d3-array": "^2.0.3",
+    "d3-format": "^1.3.2",
     "d3-scale": "^2.1.2",
     "d3-shape": "^1.2.2",
+    "d3-time-format": "^2.1.3",
     "react": "^16.8.0-alpha.0",
     "react-dom": "^16.8.0-alpha.0",
     "react-scripts": "2.1.3",
     "react-spring": "^7.2.8",
-    "styled-components": "^4.1.3"
+    "styled-components": "^4.1.3",
+    "webfontloader": "^1.6.28"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "now-build": "react-scripts build && mv build dist",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
